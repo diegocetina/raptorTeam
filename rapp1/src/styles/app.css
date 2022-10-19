@@ -1,0 +1,28 @@
+.App {
+    text-align: center;
+  }
+  
+  .stock-container {
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-top: 3em;
+  }
+
+  .header {
+    background-color: #D9D9D9;
+    min-height: 15px;
+    font: In;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: black;
+  }
+  table {
+    display: flex;
+    justify-content: center;
+    border: 1px solid gray;
+  }
+  td {
+    border: 1px solid gray;
+    width: 30em;
+  }
