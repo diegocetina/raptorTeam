@@ -1,5 +1,6 @@
-import "../styles/style.css";
-import { listVentas } from "../Data/VentasData.js";
+import "../../styles/style.css";
+import { listVentas } from "../../Data/VentasData.js";
+
 
 
 
@@ -18,9 +19,13 @@ export const Ventas = () => {
                 idVenta={data.idVenta}
                 valor={data.valor}
               />
+             
             </div>
           );
         })}
+        
+        <TabFooter/>
+        
       </div>
     </>
   );
@@ -28,11 +33,11 @@ export const Ventas = () => {
 
 const TabHeader = () => {
   return (
-    <thead>
+    <thead class="thead-dark">
       <tr>
-        <td>Fecha</td>
-        <td>idVenta</td>
-        <td>Valor</td>
+        <th>Fecha</th>
+        <th>idVenta</th>
+        <th>Valor</th>
       </tr>
     </thead>
   );
@@ -41,7 +46,7 @@ const TabHeader = () => {
 const Venta = ({ fecha, idVenta, valor }) => {
   if (!fecha) return <div />;
   return (
-    <tbody>
+    <tbody class="table table-bordered">
       <tr>
         <td>{fecha}</td>
         <td>{idVenta}</td>
@@ -50,3 +55,13 @@ const Venta = ({ fecha, idVenta, valor }) => {
     </tbody>
   );
 };
+
+const TabFooter = () => {
+  return(
+    <tfoot>
+      <td></td>
+      <td>Total</td>
+      <td>{Object.values(listVentas).map((data)=> data.valor).reduce((a, b) => a + parseFloat(b), 0)}</td>
+    </tfoot>
+  )
+}

@@ -1,31 +1,97 @@
 import "../styles/style.css";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { Ventas } from "./admin/Ventas";
 
 export const HomePageHeader = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-secondary">
       <div className="container-fluid">
-        <h1 className="navbar-brand">RaptorTeam app</h1>
+        <nav>
+          <Link to="/home" className="navbar-brand">
+            RaptorTeam App
+          </Link>
+        </nav>
+      </div>
+      
+    </nav>
+    
+  );
+};
+
+export const AdminPageHeader = () => {
+  return (
+    <div>
+    <nav className="navbar navbar-expand-lg bg-secondary">
+      <div className="container-fluid">
+        <nav>
+          <Link to="/home" className="navbar-brand">
+            RaptorTeam App
+          </Link>
+        </nav>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
               <nav>
-                <Link to="/listProd" class="nav-link active">Lista de productos</Link>
+                <Link to="lista" className="nav-link active">
+                  Lista de productos
+                </Link>
               </nav>
             </li>
             <li className="nav-item">
               <nav>
-                <Link to="/modificar" class="nav-link active">Modificar producto</Link>
+                <Link to="modificar" className="nav-link active">
+                  Modificar producto
+                </Link>
               </nav>
             </li>
             <li className="nav-item">
               <nav>
-                <Link to="/ventas" class="nav-link active">Ventas</Link>
+                <Link to="ventas" element={<Ventas/>} className="nav-link active">
+                  Ventas
+                </Link>
+                
               </nav>
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+      </div>  
+    </nav>,
+    <div><Outlet /></div>
+    </div>
+  );
+};
+
+export const ClientPageHeader = () => {
+  return (
+    <div>
+    <nav className="navbar navbar-expand-lg bg-secondary">
+      <div className="container-fluid">
+        <nav>
+          <Link to="/home" className="navbar-brand">
+            RaptorTeam App
+          </Link>
+        </nav>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <nav>
+                <Link to="productos" className="nav-link active">
+                  Lista de productos
+                </Link>
+              </nav>
+            </li>
+            <li className="nav-item">
+              <nav>
+                <Link to="carrito" className="nav-link active">
+                  Carrito
+                </Link>
+              </nav>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>,
+    <div><Outlet /></div>
+    </div>
   );
 };

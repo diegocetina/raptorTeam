@@ -1,4 +1,4 @@
-import "../styles/style.css"
+import "../../styles/style.css"
 export const ModProd = () =>{
     return (
         <div className="card" >
