@@ -1,7 +1,9 @@
 .App {
     text-align: center;
   }
-  
+.highlight{
+  background-color: gray;
+}  
   .stock-container {
     padding-left: 3em;
     padding-right: 3em;
@@ -25,4 +27,7 @@
   td {
     border: 1px solid gray;
     width: 30em;
+  }
+  .card {
+    width: 18rem;
   }

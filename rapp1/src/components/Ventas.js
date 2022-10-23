@@ -1,15 +1,17 @@
-import "../styles/app.css";
+import "../styles/style.css";
 import { listVentas } from "../Data/VentasData.js";
+
+
+
 export const Ventas = () => {
   return (
     <>
-      <HomePageHeader />
+      
       <div className="tabla-ventas">
-      <TabHeader/>
+        <TabHeader />
         {listVentas.map((data, key) => {
           return (
             <div key={key}>
-                
               <Venta
                 key={key}
                 fecha={data.fecha}
@@ -24,35 +26,27 @@ export const Ventas = () => {
   );
 };
 
-const HomePageHeader = () => {
+const TabHeader = () => {
   return (
-    <header className="header">
-      <h2>Lista ventas</h2>
-    </header>
-  );
-};
-
-const TabHeader = () =>{
-    return(
     <thead>
-    <tr>
+      <tr>
         <td>Fecha</td>
         <td>idVenta</td>
         <td>Valor</td>
-    </tr>
+      </tr>
     </thead>
-    );
-}
+  );
+};
 
 const Venta = ({ fecha, idVenta, valor }) => {
   if (!fecha) return <div />;
   return (
-      <tbody> 
-        <tr>
-          <td>{fecha}</td>
-          <td>{idVenta}</td>
-          <td>{valor}</td>
-        </tr>
-      </tbody>
+    <tbody>
+      <tr>
+        <td>{fecha}</td>
+        <td>{idVenta}</td>
+        <td>{valor}</td>
+      </tr>
+    </tbody>
   );
 };
