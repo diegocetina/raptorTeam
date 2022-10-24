@@ -23,10 +23,12 @@
     justify-content: center;
     border: 1px solid gray;
     width: 50%;
+    top: 97px;
+    left: 115px;
   }
   td {
     border: 1px solid black;
-    width: 20em;
+    width: 313px;
     
   }
   th {
@@ -35,8 +37,15 @@
   }
   .card {
     position: absolute;
-    width: 123px;
-    height: 120px;
+    width: 200px;
+    height: 160px;
+    left: 41px;
+    top: 42px;
+  }
+  .cardShow {
+    position: absolute;
+    width: 200px;
+    height: 220px;
     left: 129px;
     top: 90px;
   }

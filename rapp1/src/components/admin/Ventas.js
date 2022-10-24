@@ -2,8 +2,6 @@ import "../../styles/style.css";
 import { listVentas } from "../../Data/VentasData.js";
 
 
-
-
 export const Ventas = () => {
   return (
     <>
