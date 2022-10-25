@@ -16,7 +16,7 @@ export const productsData = [
     img: "../../sol.png",
   },
   {
-    id: 3,
+    id: 2,
     nombre: "Modelo avión raptor",
     descripcion: "Modelo a escala 15*50 cm",
     precio: "95.0",

@@ -59,7 +59,7 @@ const TabFooter = () => {
     <tfoot>
       <td></td>
       <td>Total</td>
-      <td>{Object.values(listVentas).map((data)=> data.valor).reduce((a, b) => a + parseFloat(b), 0)}</td>
+      <td>{Object.values(listVentas).map((data)=> data.valor).reduce((a, b) => parseFloat(a) + parseFloat(b), 0)}</td>
     </tfoot>
   )
 }

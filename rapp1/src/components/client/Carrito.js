@@ -3,6 +3,7 @@ import { carritoData } from "../../Data/CarritoData.js";
 
 
 export const Carrito = () => {
+  
   return (
     <>
       
@@ -17,6 +18,7 @@ export const Carrito = () => {
                 cantidad={data.cantidad}
                 producto={data.producto}
                 valor={data.valor}
+                
               />
              
             </div>
@@ -33,7 +35,7 @@ export const Carrito = () => {
 
 const TabHeader = () => {
   return (
-    <thead class="thead-dark">
+    <thead className="thead-dark">
       <tr>
         <th>Imagen</th>
         <th>Cantidad</th>
@@ -45,12 +47,14 @@ const TabHeader = () => {
   );
 };
 
-const Venta = ({ img, cantidad, producto, valor }) => {
+
+
+const Venta = ({ img, cantidad, producto, valor, total }) => {
   if (!img) return <div />;
   return (
-    <tbody class="table table-bordered">
+    <tbody className="table table-bordered">
       <tr>
-        <td><img src={img} class="card-img-top" alt="no image"></img></td>
+        <td><img src={img} className="card-img-top" alt="not found"></img></td>
         <td>{cantidad}</td>
         <td>{producto}</td>
         <td>{valor}</td>
@@ -66,7 +70,7 @@ const TabFooter = () => {
       <td></td>
       <td></td>
       <td>Total</td>
-      <td>{Object.values(carritoData).map((data)=> data.valor).reduce((a, b) => a + parseFloat(b), 0)}</td>
+      <td>{carritoData.length && carritoData.map((value) => value.cantidad*value.valor).reduce((a, b) => a + b, 0)}</td>
     </tfoot>
   )
 }

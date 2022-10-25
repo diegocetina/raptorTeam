@@ -3,9 +3,13 @@ import "../../styles/style.css"
 import { useState } from "react";
 
 export const ModProd = () =>{
-    const [id, setId] = useState(1);
-    const HandleClick = (id) => {
-        setId(id);
+    const [id, setId] = useState(2);
+    console.log(id);
+    const Producto = ({id, nombre}) => {
+        return (
+
+            <li onClick={()=>{setId(id)}} className="list-group-item">{nombre} </li>
+        )
     }
     return (
         <div className="container-fluid">
@@ -21,8 +25,10 @@ export const ModProd = () =>{
                                     <div key={key} >
                                     <Producto
                                         key={key}
-                                        nombre={data.nombre}   
+                                        nombre={data.nombre} 
+                                        id={data.id} 
                                     />
+                                    
                                     </div>
                                     );
                             })}
@@ -38,21 +44,21 @@ export const ModProd = () =>{
                     </div>
                 </div>
                 <div className="col">
-                    <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder={productsData[id].nombre}/>
+                    <div className="mb-3">
+                    <label htmlFor="nombre" className="form-label">Nombre</label>
+                    <input type="text" className="form-control" id="nombre" placeholder={productsData[id].nombre}/>
                     </div>
-                    <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <input type="text" class="form-control" id="descripcion" placeholder={productsData[id].descripcion}/>
+                    <div className="mb-3">
+                    <label htmlFor="descripcion" className="form-label">Descripción</label>
+                    <input type="text" className="form-control" id="descripcion" placeholder={productsData[id].descripcion}/>
                     </div>
-                    <div class="mb-3">
-                    <label for="precio" class="form-label">precio</label>
-                    <input type="number" class="form-control" id="precio" placeholder={productsData[id].precio}/>
+                    <div className="mb-3">
+                    <label htmlFor="precio" className="form-label">precio</label>
+                    <input type="number" className="form-control" id="precio" placeholder={productsData[id].precio}/>
                     </div>
-                    <div class="mb-3">
-                    <label for="stock" class="form-label">Stock</label>
-                    <input type="number" class="form-control" id="stock" placeholder={productsData[id].stock}/>
+                    <div className="mb-3">
+                    <label htmlFor="stock" className="form-label">Stock</label>
+                    <input type="number" className="form-control" id="stock" placeholder={productsData[id].stock}/>
                     </div>
                     <button>Guardar cambios</button>
                 </div>       
@@ -62,9 +68,3 @@ export const ModProd = () =>{
 }
 
 
-
-const Producto = ({nombre, id}) => {
-    return (
-        <a className="list-group-item">{nombre} {/* onClick={HandleClick({id})} */} </a>
-    )
-}

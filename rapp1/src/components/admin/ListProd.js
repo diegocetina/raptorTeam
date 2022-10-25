@@ -4,10 +4,11 @@ import "../../styles/style.css";
 export const ListProd = () => {
   return (
       <div className="card">
+        
         <ul className="list-group list-group-flush">
           {productsData.map((data, key) => {
             return (
-              <div  key={key}>
+              <div className="col" key={key}>
                 <Producto
                   key={key}
                   img={data.img}
@@ -20,14 +21,15 @@ export const ListProd = () => {
             );
           })}
         </ul>
+        <button>Añadir producto</button>
       </div>
   );
 };
 
 const Producto = ({ nombre, descripcion, precio, stock, img }) => {
   return (
-    <div className="row">
-      <img src={img} className="list-group-item" alt="no image" />
+    <div className="col">
+      <img src={img} className="card-img-top" alt="not found" />
       <li className="list-group-item">{nombre}</li>
       <li className="list-group-item">{descripcion}</li>
       <li className="list-group-item">{precio}</li>

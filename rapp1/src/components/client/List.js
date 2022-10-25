@@ -31,7 +31,7 @@ export const List = () => {
 const Producto = ({ nombre, descripcion, precio, stock, img }) => {
   return (
     <div className="row">
-      <img src={img} className="list-group-item" alt="no image" />
+      <img src={img} className="list-group-item" alt="not found" />
       <li className="list-group-item">{nombre}</li>
       <li className="list-group-item">{descripcion}</li>
       <li className="list-group-item">{precio}</li>
