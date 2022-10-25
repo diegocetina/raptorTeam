@@ -10,6 +10,14 @@ export const ModProd = () =>{
 
             <li onClick={()=>{setId(id)}} className="list-group-item">{nombre} </li>
         )
+        
+  /*   const[productsData, setProductsData] = useState([]);
+    const modItems = ()=>{
+        setProductsData([ ...items{
+            nombre:
+        } */
+
+        
     }
     return (
         <div className="container-fluid">
