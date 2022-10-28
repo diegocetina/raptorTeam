@@ -1,41 +1,75 @@
+import { createContext, useContext, useEffect, useState } from "react";
 import { productsData } from "../../Data/ProductsData";
 import "../../styles/style.css";
 
 export const List = () => {
+  /* const addCart= (producto) => {
+    const enCarrito =carritoProd.find((prodEnCarrito) => prodEnCarrito.id=== producto.id);
+    if(enCarrito){
+      setCarritoProd(
+        carritoProd.map((prodEnCarrito)=> {
+          if(prodEnCarrito.id=== producto.id){
+            return {...enCarrito, stock: enCarrito.stock +1}
+          } else return prodEnCarrito;
+        })
+      );
+  }else{
+    setCarritoProd([...enCarrito, {...producto, stock:1}]);
+  }
+};
+  const borrarItem = (producto) =>{
+    const enCarrito =carritoProd.find((prodEnCarrito) => prodEnCarrito.id=== producto.id);
+    if(enCarrito.stock === 1){
+      setCarritoProd(
+        carritoProd.filter(prodEnCarrito =>prodEnCarrito.id !== producto.id)
+      )
+    } else {
+      setCarritoProd((prodEnCarrito)=>{
+        if(prodEnCarrito.id===producto.id){
+          return {...enCarrito, stock: enCarrito.stock - 1}
+        } else return prodEnCarrito;
+      }) 
+    }
+  }; */
   return (
-      <div className="card">
-        <ul className="list-group list-group-flush">
-          {productsData.map((data, key) => {
-            return (
-              <div  key={key}>
-                <Producto
-                  key={key}
-                  img={data.img}
-                  nombre={data.nombre}
-                  descripcion={data.descripcion}
-                  precio={data.precio}
-                  stock={data.stock}
-                  
-                />
-                <button>Añadir a carrito</button>
-              </div>
-              
-            );
-          })}
-        </ul>
-        
+    
+    <div className="stock-container">
+     
+      {productsData.map((data, key) => {
+        return (
+          <div key={key}>
+              <Producto
+                key={key}
+                img={data.img}
+                nombre={data.nombre}
+                descripcion={data.descripcion}
+                precio={data.precio}
+                stock={data.stock}
+              />
+              <button /* onClick={()=>addCart(data)} */>Añadir a carrito</button> 
+          </div> 
+        );
+      })}
+      
       </div>
+      
   );
 };
 
 const Producto = ({ nombre, descripcion, precio, stock, img }) => {
   return (
-    <div className="row">
-      <img src={img} className="list-group-item" alt="not found" />
-      <li className="list-group-item">{nombre}</li>
-      <li className="list-group-item">{descripcion}</li>
-      <li className="list-group-item">{precio}</li>
-      <li className="list-group-item">{stock}</li>
+    <div className="product">
+      <img src={img} className="img" alt="not found" />
+      <p>{nombre}</p>
+      <p>{descripcion}</p>
+      <p>{precio}</p>
+      <p>{stock}</p>
     </div>
   );
 };
+
+
+  
+
+
+ 

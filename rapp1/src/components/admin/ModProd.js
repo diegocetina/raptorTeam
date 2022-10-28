@@ -4,21 +4,28 @@ import { useState } from "react";
 
 export const ModProd = () =>{
     const [id, setId] = useState(2);
-    console.log(id);
     const Producto = ({id, nombre}) => {
         return (
 
             <li onClick={()=>{setId(id)}} className="list-group-item">{nombre} </li>
         )
-        
-  /*   const[productsData, setProductsData] = useState([]);
-    const modItems = ()=>{
-        setProductsData([ ...items{
-            nombre:
-        } */
+        }   
+    const[modProds, setModProds] = useState(productsData);
+    const modItems = (e)=>{
+        setModProds(
+            modProds.map((producto)=>
+                producto.id===id
+                    ?{...producto, nombre: e.target.value,
+                    descripcion:e.target.value, 
+                    precio:e.target.value,
+                    stock:e.target.value
+                }
+                    :{...producto}
+            )
+        );
 
-        
-    }
+        }
+    
     return (
         <div className="container-fluid">
             <div className="row">
@@ -45,30 +52,36 @@ export const ModProd = () =>{
                 </div>
                 <div className="col">
                     <div className="card" >
-                        <img src={productsData[id].img} className="card-img-top" alt="no carga"/>
+                        <img src={productsData[id].img} className="img" alt="no carga"/>
                         <div className="card-body">
-                            <h5 className="card-title">{productsData[id].nombre}</h5>
+                            <h5 className="card-title">{modProds[id].nombre}</h5>
                         </div>
                     </div>
                 </div>
                 <div className="col">
                     <div className="mb-3">
                     <label htmlFor="nombre" className="form-label">Nombre</label>
-                    <input type="text" className="form-control" id="nombre" placeholder={productsData[id].nombre}/>
+                    <input onChange={modItems} 
+                    type="text" className="form-control" id="nombre" 
+                    placeholder={productsData[id].nombre}/>
                     </div>
                     <div className="mb-3">
                     <label htmlFor="descripcion" className="form-label">Descripción</label>
-                    <input type="text" className="form-control" id="descripcion" placeholder={productsData[id].descripcion}/>
+                    <input onChange={modItems}
+                    type="text" className="form-control" id="descripcion" 
+                    placeholder={productsData[id].descripcion}/>
                     </div>
                     <div className="mb-3">
                     <label htmlFor="precio" className="form-label">precio</label>
-                    <input type="number" className="form-control" id="precio" placeholder={productsData[id].precio}/>
+                    <input type="number" className="form-control" id="precio" 
+                    placeholder={productsData[id].precio}/>
                     </div>
                     <div className="mb-3">
                     <label htmlFor="stock" className="form-label">Stock</label>
-                    <input type="number" className="form-control" id="stock" placeholder={productsData[id].stock}/>
+                    <input type="number" className="form-control" id="stock" 
+                    placeholder={productsData[id].stock}/>
                     </div>
-                    <button>Guardar cambios</button>
+                    <button onClick={modItems}>Guardar cambios</button>
                 </div>       
             </div>
         </div>
