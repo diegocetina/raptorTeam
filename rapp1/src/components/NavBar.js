@@ -1,6 +1,6 @@
-import "../styles/style.css";
+import "./client/Navbar.css";
 import { Link, Outlet } from "react-router-dom";
-import { Ventas } from "./admin/Ventas";
+
 
 export const HomePageHeader = () => {
   return (
@@ -12,51 +12,39 @@ export const HomePageHeader = () => {
           </Link>
         </nav>
       </div>
-      
     </nav>
-    
   );
 };
 
 export const AdminPageHeader = () => {
   return (
     <div>
-    <nav className="navbar navbar-expand-lg bg-secondary">
-      <div className="container-fluid">
-        <nav>
-          <Link to="/home" className="navbar-brand">
-            RaptorTeam App
-          </Link>
-        </nav>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <nav>
-                <Link to="lista" className="nav-link active">
-                  Lista de productos
-                </Link>
-              </nav>
-            </li>
-            <li className="nav-item">
-              <nav>
-                <Link to="modificar" className="nav-link active">
-                  Modificar producto
-                </Link>
-              </nav>
-            </li>
-            <li className="nav-item">
-              <nav>
-                <Link to="ventas" element={<Ventas/>} className="nav-link active">
-                  Ventas
-                </Link>
-                
-              </nav>
-            </li>
-          </ul>
-        </div>
-      </div>  
-    </nav>,
-    <div><Outlet /></div>
+      <nav className="navbar">
+        <Link to="/home" className="navbar-logo">
+          RaptorTeam App
+        </Link>
+        <ul className="navbar-links">
+          <li>
+            <Link to="lista" className="cart_link">
+              <span>Lista de productos</span>
+            </Link>
+          </li>
+          <li className="navbar-links">
+            <Link to="modificar" className="cart_link">
+              Modificar producto
+            </Link>
+          </li>
+          <li className="navbar-links">
+            <Link to="ventas" className="cart_link">
+              Ventas
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      ,
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 };
@@ -64,34 +52,28 @@ export const AdminPageHeader = () => {
 export const ClientPageHeader = () => {
   return (
     <div>
-    <nav className="navbar navbar-expand-lg bg-secondary">
-      <div className="container-fluid">
-        <nav>
-          <Link to="/home" className="navbar-brand">
-            RaptorTeam App
-          </Link>
-        </nav>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <nav>
-                <Link to="productos" className="nav-link active">
-                  Lista de productos
-                </Link>
-              </nav>
-            </li>
-            <li className="nav-item">
-              <nav>
-                <Link to="carrito" className="nav-link active">
-                  Carrito
-                </Link>
-              </nav>
-            </li>
-          </ul>
-        </div>
-      </div>  
-    </nav>,
-    <div><Outlet /></div>
+      <nav className="navbar">
+        <Link to="/home" className="navbar-logo">
+          RaptorTeam App
+        </Link>
+        <ul className="navbar-links">
+          <li >
+            <Link to="productos" className="cart_link">
+              Lista de productos
+            </Link>
+          </li>
+          <li >
+            <Link to="carrito" className="cart_link">
+              Carrito
+              <span className="cart-itemcount">0</span>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      ,
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 };

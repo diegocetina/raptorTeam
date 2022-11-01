@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { productsData } from "../../Data/ProductsData";
-import "../../styles/style.css";
+import "../admin/ProdStyles.css";
+import "./ListaStyle.css";
 
 export const List = () => {
   /* const addCart= (producto) => {
@@ -32,27 +33,33 @@ export const List = () => {
     }
   }; */
   return (
-    
     <div className="stock-container">
-     
       {productsData.map((data, key) => {
         return (
           <div key={key}>
-              <Producto
-                key={key}
-                img={data.img}
-                nombre={data.nombre}
-                descripcion={data.descripcion}
-                precio={data.precio}
-                stock={data.stock}
-              />
-              <button /* onClick={()=>addCart(data)} */>Añadir a carrito</button> 
-          </div> 
+            <Producto
+              key={key}
+              img={data.imagenURL}
+              nombre={data.nombre}
+              descripcion={data.descripcion}
+              precio={data.precio}
+              stock={data.stock}
+            />
+            <div className="container">              
+              <div >
+                cantidad
+                <select>
+                  <option value="1">0</option>
+                </select>
+              </div>
+              <button className="boton" /* onClick={()=>addCart(data)} */>
+                Añadir a carrito
+              </button>
+            </div>
+          </div>
         );
       })}
-      
-      </div>
-      
+    </div>
   );
 };
 
@@ -61,15 +68,9 @@ const Producto = ({ nombre, descripcion, precio, stock, img }) => {
     <div className="product">
       <img src={img} className="img" alt="not found" />
       <p>{nombre}</p>
-      <p>{descripcion}</p>
-      <p>{precio}</p>
-      <p>{stock}</p>
+      <p className="descripcion">{descripcion}</p>
+      <p className="precio">Precio: ${precio}</p>
+      <p>Unidades en stock: {stock}</p>
     </div>
   );
 };
-
-
-  
-
-
- 

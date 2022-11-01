@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { productsData } from "../../Data/ProductsData";
-import "../../styles/style.css";
+import "./ProdStyles.css";
 
 export const ListProd = () => {
 const[nuevoProd, setNuevoProd] = useState (productsData)
@@ -9,6 +9,7 @@ const[nuevoProd, setNuevoProd] = useState (productsData)
     setNuevoProd((producto)=>
     [...producto,{
       id:nuevoProd.length,
+      imagenURL:e.target.value,
       nombre: e.target.value,
       descripcion:e.target.value,
       precio: e.target.value,
@@ -23,10 +24,10 @@ const[nuevoProd, setNuevoProd] = useState (productsData)
     <div className="stock-container">
       {nuevoProd.map((data, key) => {
         return (
-          <div className="col" key={key}>
+          <div className="product" key={key}>
             <Producto
               key={key}
-              img={data.img}
+              imagenURL={data.imagenURL}
               nombre={data.nombre}
               descripcion={data.descripcion}
               precio={data.precio}
@@ -59,14 +60,14 @@ const[nuevoProd, setNuevoProd] = useState (productsData)
   );
 };
 
-const Producto = ({ nombre, descripcion, precio, stock, img }) => {
+const Producto = ({ nombre, descripcion, precio, stock, imagenURL }) => {
   return (
-    <div className="product">
-      <img src={img} className="img" alt="not found" />
+    <div >
+      <img src={imagenURL} className="img" alt="not found" />
       <p>{nombre}</p>
-      <p>{descripcion}</p>
-      <p>{precio}</p>
-      <p>{stock}</p>
+      <p className="descripcion">{descripcion}</p>
+      <p className="precio">Precio: $ {precio}</p>
+      <p>Unidades en stock: {stock}</p>
     </div>
   );
 };
