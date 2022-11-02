@@ -6,7 +6,7 @@ const getAllProducts = async (req, res) =>{
 
         res.json(products)
     } catch (error) {
-        console.log("pailas, la embarró en algún lado");
+        console.error(error);
         res.status(500).json({message: "alguna vaina falló en el servidor"});
     }
 }
@@ -17,7 +17,7 @@ const getProductById = async (req, res) =>{
 
         res.json(product)
     } catch (error) {
-        console.log("pailas, la embarró en algún lado");
+        console.error(error);
         res.status(500).json({message: "alguna vaina falló en el servidor"});
     }
 }

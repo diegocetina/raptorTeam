@@ -20,6 +20,13 @@ const products = [
       stock: 5,
       imagenURL: "../../raptor1.png",
     },
+    {
+      nombre: "Computador i5",
+      descripcion: "Computador para trabajo en casa",
+      precio: 395.0,
+      stock: 2,
+      imagenURL: "https://pngtree.com/freepng/isolated-desktop-computer-icon-pc-monitor-icon-in-transparent-b_3777006.html",
+    }
   ];
   
   module.exports = products;

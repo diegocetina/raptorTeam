@@ -1,8 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch} from "react-redux"
 import { productsData } from "../../Data/ProductsData";
+import {getProducts as ListProducts} from "../../redux/actions/ProductsActions";
 import "./ProdStyles.css";
 
 export const ListProd = () => {
+  const dispatch = useDispatch();
+  const getProducts=useSelector(state => state.getProducts);
+  const {products} = getProducts;
+
+  useEffect(()=>{
+    dispatch(ListProducts())
+  },[dispatch]);
 const[nuevoProd, setNuevoProd] = useState (productsData)
  
   const handleProd = (e)=>{
@@ -18,15 +27,15 @@ const[nuevoProd, setNuevoProd] = useState (productsData)
   alert("producto añadido")};
   
  
-  console.log(nuevoProd)
+  console.log(products)
   
   return (
     <div className="stock-container">
-      {nuevoProd.map((data, key) => {
+      {products.map((data, key) => {
         return (
           <div className="product" key={key}>
             <Producto
-              key={key}
+              key={data._id}
               imagenURL={data.imagenURL}
               nombre={data.nombre}
               descripcion={data.descripcion}
