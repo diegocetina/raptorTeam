@@ -37,6 +37,15 @@
     object-fit: contain;
   }
 
+  .form{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+  }
+
   @media (max-width: 1232px){
     .stock-container{
         grid-template-columns: repeat(3, 1fr);

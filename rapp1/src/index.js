@@ -7,7 +7,7 @@ import "bootstrap/dist/js/bootstrap";
 import "bootstrap/dist/css/bootstrap.css"; 
 import "jquery";
 import {Provider} from 'react-redux'
-import store from "./redux/server"
+import store from "./redux/store"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

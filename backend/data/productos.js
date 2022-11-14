@@ -25,7 +25,7 @@ const products = [
       descripcion: "Computador para trabajo en casa",
       precio: 395.0,
       stock: 2,
-      imagenURL: "https://pngtree.com/freepng/isolated-desktop-computer-icon-pc-monitor-icon-in-transparent-b_3777006.html",
+      imagenURL: "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     }
   ];
   

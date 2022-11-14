@@ -1,22 +1,41 @@
 import "../../styles/style.css";
-import { carritoData } from "../../Data/CarritoData.js";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link} from "react-router-dom"
 
 
-export const Carrito = () => {
-  
+export const Carrito = (item) => {
+  const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart)
+  const {cartItems} = cart;
+
+  const TabFooter = () => {
+    return(
+      <tfoot>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td>{cartItems.length && cartItems.map((value) => value.cantidad*value.valor).reduce((a, b) => a + b, 0)}</td>
+      </tfoot>
+    )
+  }
   return (
     <>
       
       <div className="tabla-ventas">
         <TabHeader />
-        {carritoData.map((data, key) => {
+        {cartItems.length === 0 ? (
+          <div>
+            Nada en el carrito <Link to="/productos"> Volver a lista de productos</Link>
+          </div>
+        ) :cartItems.map((data, key) => {
           return (
             <div key={key}>
               <Venta
                 key={key}
-                img={data.img}
-                cantidad={data.cantidad}
-                producto={data.producto}
+                img={data.imagenURL}
+                cantidad={data.qty}
+                producto={data.name}
                 valor={data.valor}
                 
               />
@@ -64,13 +83,4 @@ const Venta = ({ img, cantidad, producto, valor, total }) => {
   );
 };
 
-const TabFooter = () => {
-  return(
-    <tfoot>
-      <td></td>
-      <td></td>
-      <td>Total</td>
-      <td>{carritoData.length && carritoData.map((value) => value.cantidad*value.valor).reduce((a, b) => a + b, 0)}</td>
-    </tfoot>
-  )
-}
+

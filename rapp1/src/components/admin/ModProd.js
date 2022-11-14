@@ -1,91 +1,112 @@
-import { productsData } from "../../Data/ProductsData";
-import "../../styles/style.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts as ListProducts } from "../../redux/actions/ProductsActions";
+import "../../styles/style.css";
 
-export const ModProd = () =>{
-    const [id, setId] = useState(2);
-    const Producto = ({id, nombre}) => {
-        return (
+export const ModProd = () => {
+  const dispatch = useDispatch();
+  const getProducts = useSelector((state) => state.getProducts);
+  const { products, loading, error } = getProducts;
 
-            <li onClick={()=>{setId(id)}} className="list-group-item">{nombre} </li>
-        )
-        }   
-    const[modProds, setModProds] = useState(productsData);
-    const modItems = (e)=>{
-        setModProds(
-            modProds.map((producto)=>
-                producto.id===id
-                    ?{...producto, nombre: e.target.value,
-                    descripcion:e.target.value, 
-                    precio:e.target.value,
-                    stock:e.target.value
-                }
-                    :{...producto}
-            )
-        );
+  useEffect(() => {
+    dispatch(ListProducts());
+  }, [dispatch]);
 
-        }
-    
+  const [id, setId] = useState("636290d03aaf816db603d5e1");
+  const Producto = ({ nombre }) => {
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col">
-                    <div className="card" >
-                        <div className="card-header">
-                            Productos
-                        </div>
-                        <ul className="list-group list-group-flush" >
-                            {productsData.map((data, key) => {
-                                return (
-                                    <div key={key} >
-                                    <Producto
-                                        key={key}
-                                        nombre={data.nombre} 
-                                        id={data.id} 
-                                    />
-                                    
-                                    </div>
-                                    );
-                            })}
-                        </ul>
-                    </div>,
-                </div>
-                <div className="col">
-                    <div className="card" >
-                        <img src={productsData[id].img} className="img" alt="no carga"/>
-                        <div className="card-body">
-                            <h5 className="card-title">{modProds[id].nombre}</h5>
-                        </div>
+      <li
+        onClick={() => {
+          setId(id);
+        }}
+        className="list-group-item"
+      >
+        {nombre}
+      </li>
+    );
+  };
+  
+
+  return (
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col">
+          <div className="card">
+            <div className="card-header">Productos</div>
+            <ul className="list-group list-group-flush">
+              {loading ? (
+                <h2>cargando datos...</h2>
+              ) : error ? (
+                <h2>{error}</h2>
+              ) : (
+                products.map((data, key) => {
+                  return (
+                    <div key={key}>
+                      <Producto key={data._id} nombre={data.nombre} />
                     </div>
-                </div>
-                <div className="col">
-                    <div className="mb-3">
-                    <label htmlFor="nombre" className="form-label">Nombre</label>
-                    <input onChange={modItems} 
-                    type="text" className="form-control" id="nombre" 
-                    placeholder={productsData[id].nombre}/>
-                    </div>
-                    <div className="mb-3">
-                    <label htmlFor="descripcion" className="form-label">Descripción</label>
-                    <input onChange={modItems}
-                    type="text" className="form-control" id="descripcion" 
-                    placeholder={productsData[id].descripcion}/>
-                    </div>
-                    <div className="mb-3">
-                    <label htmlFor="precio" className="form-label">precio</label>
-                    <input type="number" className="form-control" id="precio" 
-                    placeholder={productsData[id].precio}/>
-                    </div>
-                    <div className="mb-3">
-                    <label htmlFor="stock" className="form-label">Stock</label>
-                    <input type="number" className="form-control" id="stock" 
-                    placeholder={productsData[id].stock}/>
-                    </div>
-                    <button onClick={modItems}>Guardar cambios</button>
-                </div>       
-            </div>
+                  );
+                })
+              )}
+            </ul>
+          </div>
+          ,
         </div>
-    )
-}
-
-
+        <div className="col">
+          <div className="card">
+            <img href={products._id} src={products[id].imagenURL} className="img" alt="no carga" />
+            <div className="card-body">
+              <h5 className="card-title" href={products._id}>{products[id].nombre}</h5>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div className="mb-3">
+            <label htmlFor="nombre" className="form-label">
+              Nombre
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="nombre"
+              placeholder={products.nombre}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="descripcion" className="form-label">
+              Descripción
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="descripcion"
+              placeholder={products.descripcion}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="precio" className="form-label">
+              precio
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="precio"
+              placeholder={products.precio}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="stock" className="form-label">
+              Stock
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="stock"
+              placeholder={products.stock}
+            />
+          </div>
+          <button /* onClick={modItems} */>Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  );
+};
